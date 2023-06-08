@@ -1,25 +1,53 @@
-import { ImageBackground, SafeAreaView, StyleSheet, Text, View } from "react-native";
-import { Feather } from "@expo/vector-icons";
+import {
+  ImageBackground,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
+import IconText from "../components/IconText";
 
 const City = () => {
-  const { container } = styles;
+  const {
+    container,
+    cityName,
+    cityText,
+    countryName,
+    poplationWrapper,
+    populationText,
+    rizeSetText,
+    rizeSetWrapper,
+    rowLayout,
+  } = styles;
   return (
     <SafeAreaView style={container}>
       <ImageBackground
         source={require("../../assets/city.jpg")}
         style={imageLayout}
       >
-        <Text style={[styles.cityName, styles.cityText]}>London</Text>
-        <Text style={[styles.countryName, styles.cityText]}>Uk</Text>
-        <View style={styles.poplationWrapper}>
-            <Feather name={'user'} size={50} color={'red'}/>
-            <Text style={styles.populationText}>8000</Text>
+        <Text style={[cityName, cityText]}>London</Text>
+        <Text style={[countryName, cityText]}>Uk</Text>
+        <View style={[poplationWrapper, rowLayout]}>
+          <IconText
+            iconName={"user"}
+            iconColor={"red"}
+            bodyText={"8000"}
+            bodyTextStyles={populationText}
+          />
         </View>
-        <View style={styles.rizeSetWrapper}>
-            <Feather name={'sunrise'} size={50} color={'white'}/>
-            <Text style={styles.rizeSetText}>10:46:58am</Text>
-            <Feather name={'sunset'} size={50} color={'white'}/>
-            <Text style={styles.rizeSetText}>17:28:15pm</Text>
+        <View style={[rizeSetWrapper, rowLayout]}>
+          <IconText
+            iconName={"sunrise"}
+            iconColor={"white"}
+            bodyText={"10:46:58am"}
+            bodyTextStyles={rizeSetText}
+          />
+          <IconText
+            iconName={"sunset"}
+            iconColor={"white"}
+            bodyText={"17:28:15pm"}
+            bodyTextStyles={rizeSetText}
+          />
         </View>
       </ImageBackground>
     </SafeAreaView>
@@ -40,33 +68,31 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   cityText: {
-    justifyContent: 'center',
-    alignSelf: 'center',
-    fontWeight: 'bold',
-    color: 'white',
+    justifyContent: "center",
+    alignSelf: "center",
+    fontWeight: "bold",
+    color: "white",
   },
   poplationWrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 30
+    justifyContent: "center",
+    marginTop: 30,
   },
   populationText: {
     fontSize: 25,
     marginLeft: 7.5,
-    color: 'red',
-    fontWeight: 'bold'
+    color: "red",
   },
   rizeSetWrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-around',
-    marginTop: 30
+    justifyContent: "space-around",
+    marginTop: 30,
   },
   rizeSetText: {
     fontSize: 20,
-    color: 'white',
-    fontWeight: 'bold'
-  }
+    color: "white",
+  },
+  rowLayout: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
 });
 export default City;
